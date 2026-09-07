@@ -1,0 +1,1 @@
+DROP FUNCTION IF EXISTS public.guard_bank_txn_match_fields();

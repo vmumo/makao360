@@ -1,0 +1,289 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Makao360 design system
+ * Brand: deep teal primary, warm cream surface, gold accent.
+ * Mobile-first, high contrast for outdoor / cheap-screen readability.
+ * All colors in oklch.
+ */
+
+@theme inline {
+  --font-sans: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sora", "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.875rem;
+
+  /* Surfaces — clean white with a soft navy tint for sections */
+  --background: oklch(0.99 0.005 250);
+  --foreground: oklch(0.18 0.06 260);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.06 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.06 260);
+
+  /* Primary — deep navy from logo (Makao text) */
+  --primary: oklch(0.27 0.10 260);
+  --primary-foreground: oklch(0.985 0.005 250);
+
+  /* Secondary — soft tinted surface */
+  --secondary: oklch(0.96 0.015 250);
+  --secondary-foreground: oklch(0.22 0.08 260);
+
+  --muted: oklch(0.96 0.012 250);
+  --muted-foreground: oklch(0.48 0.04 260);
+
+  /* Accent — vibrant green from "360" in logo */
+  --accent: oklch(0.65 0.20 145);
+  --accent-foreground: oklch(0.99 0.005 145);
+
+  /* Brand: gold + sky-blue (from logo's chips) */
+  --gold: oklch(0.80 0.16 80);
+  --gold-foreground: oklch(0.20 0.05 60);
+  --sky: oklch(0.62 0.16 240);
+  --sky-foreground: oklch(0.99 0.005 240);
+
+  --destructive: oklch(0.58 0.22 27);
+  --destructive-foreground: oklch(0.99 0.005 250);
+
+  --success: oklch(0.65 0.20 145);
+  --success-foreground: oklch(0.99 0.005 145);
+
+  --warning: oklch(0.80 0.16 80);
+  --warning-foreground: oklch(0.20 0.05 60);
+
+  --border: oklch(0.92 0.012 250);
+  --input: oklch(0.92 0.012 250);
+  --ring: oklch(0.27 0.10 260);
+
+  --chart-1: oklch(0.27 0.10 260);
+  --chart-2: oklch(0.65 0.20 145);
+  --chart-3: oklch(0.80 0.16 80);
+  --chart-4: oklch(0.62 0.16 240);
+  --chart-5: oklch(0.55 0.18 28);
+
+  --sidebar: oklch(0.18 0.06 260);
+  --sidebar-foreground: oklch(0.96 0.012 250);
+  --sidebar-primary: oklch(0.65 0.20 145);
+  --sidebar-primary-foreground: oklch(0.99 0.005 145);
+  --sidebar-accent: oklch(0.24 0.08 260);
+  --sidebar-accent-foreground: oklch(0.96 0.012 250);
+  --sidebar-border: oklch(0.24 0.08 260);
+  --sidebar-ring: oklch(0.65 0.20 145);
+
+  --gradient-brand: linear-gradient(135deg, oklch(0.27 0.10 260) 0%, oklch(0.20 0.10 265) 100%);
+  --gradient-hero: linear-gradient(135deg, oklch(0.18 0.10 265) 0%, oklch(0.27 0.12 258) 50%, oklch(0.32 0.16 200) 100%);
+  --gradient-green: linear-gradient(135deg, oklch(0.72 0.20 145) 0%, oklch(0.55 0.20 150) 100%);
+  --gradient-gold: linear-gradient(135deg, oklch(0.85 0.16 80) 0%, oklch(0.72 0.18 65) 100%);
+  --shadow-card: 0 1px 2px oklch(0.18 0.06 260 / 0.04), 0 8px 24px -12px oklch(0.18 0.06 260 / 0.10);
+  --shadow-elevated: 0 4px 8px oklch(0.18 0.06 260 / 0.08), 0 24px 48px -18px oklch(0.18 0.06 260 / 0.25);
+  --shadow-glow: 0 0 40px oklch(0.65 0.20 145 / 0.35);
+}
+
+.dark {
+  --background: oklch(0.14 0.04 260);
+  --foreground: oklch(0.96 0.01 250);
+
+  --card: oklch(0.20 0.06 260);
+  --card-foreground: oklch(0.96 0.01 250);
+  --popover: oklch(0.20 0.06 260);
+  --popover-foreground: oklch(0.96 0.01 250);
+
+  --primary: oklch(0.72 0.18 145);
+  --primary-foreground: oklch(0.14 0.04 260);
+
+  --secondary: oklch(0.24 0.06 260);
+  --secondary-foreground: oklch(0.96 0.01 250);
+
+  --muted: oklch(0.22 0.05 260);
+  --muted-foreground: oklch(0.72 0.03 250);
+
+  --accent: oklch(0.72 0.18 145);
+  --accent-foreground: oklch(0.14 0.04 260);
+
+  --destructive: oklch(0.68 0.20 25);
+  --destructive-foreground: oklch(0.98 0.01 250);
+
+  --success: oklch(0.72 0.18 145);
+  --success-foreground: oklch(0.14 0.04 260);
+
+  --warning: oklch(0.82 0.16 75);
+  --warning-foreground: oklch(0.18 0.04 60);
+
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.72 0.18 145);
+
+  --sidebar: oklch(0.10 0.04 260);
+  --sidebar-foreground: oklch(0.96 0.01 250);
+  --sidebar-primary: oklch(0.72 0.18 145);
+  --sidebar-primary-foreground: oklch(0.14 0.04 260);
+  --sidebar-accent: oklch(0.20 0.06 260);
+  --sidebar-accent-foreground: oklch(0.96 0.01 250);
+  --sidebar-border: oklch(1 0 0 / 8%);
+  --sidebar-ring: oklch(0.72 0.18 145);
+
+  --gradient-brand: linear-gradient(135deg, oklch(0.20 0.10 260), oklch(0.14 0.08 265));
+  --gradient-hero: linear-gradient(135deg, oklch(0.10 0.06 265), oklch(0.20 0.10 258), oklch(0.30 0.14 200));
+  --gradient-green: linear-gradient(135deg, oklch(0.72 0.20 145), oklch(0.55 0.18 150));
+  --gradient-gold: linear-gradient(135deg, oklch(0.85 0.16 80), oklch(0.72 0.18 65));
+  --shadow-card: 0 1px 2px oklch(0 0 0 / 0.4), 0 8px 24px -12px oklch(0 0 0 / 0.5);
+  --shadow-elevated: 0 2px 4px oklch(0 0 0 / 0.5), 0 18px 40px -16px oklch(0 0 0 / 0.6);
+  --shadow-glow: 0 0 50px oklch(0.72 0.20 145 / 0.45);
+}
+
+/* Compat tokens — ported pages from the Blueprint use these names. Mapped to the live Makao360 palette. */
+:root {
+  --clay: oklch(0.55 0.18 28);            /* warm accent for marketing pages */
+  --clay-foreground: oklch(0.99 0.005 250);
+  --ivory: oklch(0.97 0.012 90);           /* light cream text on dark surfaces */
+  --ink: oklch(0.18 0.06 260);             /* deep text */
+  --graphite: oklch(0.22 0.08 260);        /* hover dark */
+  --mpesa: oklch(0.65 0.20 145);           /* M-Pesa green = our accent */
+  --mpesa-foreground: oklch(0.99 0.005 145);
+
+  --gradient-passport: linear-gradient(135deg, oklch(0.20 0.10 260) 0%, oklch(0.27 0.12 258) 50%, oklch(0.42 0.18 200) 100%);
+  --shadow-soft: 0 1px 2px oklch(0.18 0.06 260 / 0.04), 0 8px 24px -12px oklch(0.18 0.06 260 / 0.10);
+  --shadow-elev: 0 4px 8px oklch(0.18 0.06 260 / 0.08), 0 24px 48px -18px oklch(0.18 0.06 260 / 0.25);
+}
+.dark {
+  --clay: oklch(0.68 0.18 28);
+  --ivory: oklch(0.96 0.012 90);
+  --ink: oklch(0.96 0.01 250);
+  --graphite: oklch(0.30 0.08 260);
+  --mpesa: oklch(0.72 0.20 145);
+  --gradient-passport: linear-gradient(135deg, oklch(0.10 0.06 260), oklch(0.20 0.10 258), oklch(0.30 0.14 200));
+  --shadow-soft: 0 1px 2px oklch(0 0 0 / 0.4), 0 8px 24px -12px oklch(0 0 0 / 0.5);
+  --shadow-elev: 0 2px 4px oklch(0 0 0 / 0.5), 0 18px 40px -16px oklch(0 0 0 / 0.6);
+}
+
+@theme inline {
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-sky: var(--sky);
+  --color-sky-foreground: var(--sky-foreground);
+  --color-clay: var(--clay);
+  --color-clay-foreground: var(--clay-foreground);
+  --color-ivory: var(--ivory);
+  --color-ink: var(--ink);
+  --color-graphite: var(--graphite);
+  --color-mpesa: var(--mpesa);
+  --color-mpesa-foreground: var(--mpesa-foreground);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-brand { background: var(--gradient-brand); }
+  .bg-gradient-hero { background: var(--gradient-hero); }
+  .bg-gradient-green { background: var(--gradient-green); }
+  .bg-gradient-gold { background: var(--gradient-gold); }
+  .shadow-card { box-shadow: var(--shadow-card); }
+  .shadow-elevated { box-shadow: var(--shadow-elevated); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-elev { box-shadow: var(--shadow-elev); }
+  .bg-gradient-passport { background: var(--gradient-passport); }
+  .text-gradient-brand {
+    background: linear-gradient(135deg, oklch(0.27 0.10 260), oklch(0.55 0.20 150));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .grid-pattern {
+    background-image:
+      linear-gradient(oklch(1 0 0 / 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(1 0 0 / 0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .dot-pattern {
+    background-image: radial-gradient(oklch(0.27 0.10 260 / 0.10) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+  .animate-float { animation: float-slow 6s ease-in-out infinite; }
+}
+
+@layer utilities {
+  .ring-jar {
+    background:
+      conic-gradient(var(--mpesa) calc(var(--p) * 1%), oklch(0.92 0.012 250) 0);
+  }
+}

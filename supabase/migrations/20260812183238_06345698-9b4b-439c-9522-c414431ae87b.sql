@@ -1,0 +1,1 @@
+drop function if exists public.public_vacancies(text, text, integer, integer, integer);
