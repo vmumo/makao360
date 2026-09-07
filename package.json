@@ -12,6 +12,8 @@
     "check:landing-ctas": "node scripts/check-landing-ctas.mjs",
     "format": "prettier --write .",
     "start": "node --env-file=.env .output/server/index.mjs",
+    "deploy": "npm run build && wrangler deploy",
+    "cf-typegen": "wrangler types",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -79,6 +81,7 @@
     "zod": "4.3.6"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.54.5",
     "@eslint/js": "9.39.4",
     "@types/node": "22.19.15",
     "@types/react": "19.2.14",
@@ -93,7 +96,8 @@
     "prettier": "3.8.1",
     "typescript": "5.9.3",
     "typescript-eslint": "8.57.1",
-    "vite": "7.3.1"
+    "vite": "7.3.1",
+    "wrangler": "^4.129.1"
   },
   "engines": {
     "node": ">=22.16.0"
