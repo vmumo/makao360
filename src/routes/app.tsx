@@ -26,7 +26,7 @@ function AppShell() {
   useEffect(() => {
     if (loading || !session) return;
     if (typeof window === "undefined") return;
-    if (window.location.pathname !== "/app") return;
+    if (window.location.pathname.replace(/\/+$/, "") !== "/app") return;
     if (roles.includes("landlord") || roles.includes("admin") || profile?.preferred_role === "landlord") {
       void navigate({ to: "/app/landlord" });
     } else {
