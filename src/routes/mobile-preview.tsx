@@ -54,7 +54,8 @@ const demoTenancy: Tenancy = {
 
 function MobilePreviewPage() {
   const { tab: tabParam } = Route.useSearch();
-  const [tab, setTab] = useState<Tab>(tabParam ?? "home");
+  // Start from the same tab on server and client; apply deep-link search after hydration.
+  const [tab, setTab] = useState<Tab>("home");
 
   // Sync from URL when search param changes (deep link navigations)
   useEffect(() => {
