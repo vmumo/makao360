@@ -48,7 +48,8 @@ const demoTenancy: Tenancy = {
   landlord: "Joseph M.",
   property: "Umoja Residences",
   rent: 8000,
-  joinedAt: new Date().toISOString(),
+  // Keep the marketing preview deterministic during SSR and hydration.
+  joinedAt: "2026-01-15T00:00:00.000Z",
 };
 
 function MobilePreviewPage() {
