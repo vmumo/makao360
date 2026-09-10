@@ -1,0 +1,28 @@
+name: Viewing reminders
+
+# Hourly viewing-reminder dispatch. Replaces the original pg_cron job
+# (unavailable on the current Supabase tier) and the dead
+# /api/public/hooks/viewing-reminders route (not served by the static
+# Cloudflare Pages deployment). Calls the service-role-only RPC directly.
+on:
+  schedule:
+    - cron: "15 * * * *"
+  workflow_dispatch:
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call dispatch_viewing_reminders
+        env:
+          SUPABASE_URL: https://tbwfsadugbvadumgpwxo.supabase.co
+          SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          set -euo pipefail
+          response=$(curl -sS --fail-with-body -X POST \
+            "$SUPABASE_URL/rest/v1/rpc/dispatch_viewing_reminders" \
+            -H "apikey: $SERVICE_ROLE_KEY" \
+            -H "Authorization: Bearer $SERVICE_ROLE_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{"_within_hours": 24}')
+          echo "dispatch_viewing_reminders: $response"
