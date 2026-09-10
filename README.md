@@ -1,6 +1,8 @@
 # Makao360 local app
 
-Exported from Lovable on 2026-09-07. Uses React, TanStack Start, Vite and Supabase. The build configuration now targets a standard Node server.
+Exported from Lovable on 2026-09-07. Uses React, TanStack Start, Vite and hosted Supabase. The frontend is deployed on Cloudflare Pages with a Cloudflare-oriented build and prerendered public routes.
+
+See the [migration and testing handover](docs/migration-and-testing-handover.md) for the complete work record, test evidence, operational notes and outstanding checks. It supersedes the earlier progress notes below where noted.
 
 ## Run
 
@@ -14,12 +16,9 @@ npm run dev
 
 Open http://127.0.0.1:3000. The local `.env` points to the new hosted project, `tbwfsadugbvadumgpwxo` and contains the server-only service-role key. Never put that key in a `VITE_` variable or commit `.env`.
 
-## Production server on your machine
+## Production deployment
 
-```sh
-npm run build
-npm start
-```
+The recorded frontend deployment is https://makao360.pages.dev, connected to GitHub `main`. Verify the Pages build and live site after each push. `npm run deploy` invokes Wrangler and is not the documented Git-connected Pages workflow. The existing `npm start` script assumes Node output and needs revalidation against the current Cloudflare build.
 
 ## New hosted Supabase project
 
@@ -35,9 +34,9 @@ The original source archive remains in Downloads. `bun.lock` is retained as an e
 
 ## Validation so far
 
-Production build, TypeScript checks, and landing CTA checks pass on Node 22. Database recovery committed successfully with 7,818 profiles, 1,770 properties, 15,622 units, 6,176 leases, 8,283 contributions and 1,808 bank transactions. Counts and complete public rows match the actual archive, which takes precedence over the earlier Lovable-generated row-count guide. Auth site and redirect URLs are configured for local development, and Realtime is enabled for two tables.
+Cloudflare production builds, TypeScript checks, and landing CTA checks passed during the migration work. One local build failed at preview-server startup for prerendering; see the handover for that limitation. Database recovery committed successfully with 7,818 profiles, 1,770 properties, 15,622 units, 6,176 leases, 8,283 contributions and 1,808 bank transactions. Counts and complete public rows matched the actual archive at recovery time, which takes precedence over the earlier Lovable-generated row-count guide. Auth site and redirect URLs were configured for local development, and Realtime was enabled for two tables.
 
-The hosted project does not expose `pg_cron` on its current tier, so the hourly reminder job must be configured after the Cloudflare deployment (or when `pg_cron` is enabled). A live sign-in smoke test still requires a test user's credentials; the build and database checks are complete.
+The hosted project did not expose `pg_cron` during migration, so scheduler configuration and reminder delivery remain unverified. Four-role live sign-in/logout tests and linked lease, KYC and messaging checks subsequently passed. Payments, payouts, production-scale capacity and additional browser workflows remain outstanding as detailed in the handover.
 
 ## Data migration helper
 

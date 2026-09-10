@@ -40,3 +40,6 @@ dist-ssr
 *.backup.zip
 migration-package/*-recovery.sql
 migration-package/*-recovery-report.json
+
+# Local migration exports (data dumps, private artifacts)
+migration/
